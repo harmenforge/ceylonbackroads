@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60">
+  <clipPath id="c"><circle cx="30" cy="30" r="30"/></clipPath>
+  <g clip-path="url(#c)">
+    <path fill="#fff" d="M0 0h60v60H0z"/>
+    <path stroke="#b22234" stroke-width="4.62" d="M0 2.31h60M0 11.55h60M0 20.79h60M0 30.03h60M0 39.27h60M0 48.51h60M0 57.75h60"/>
+    <path fill="#3c3b6e" d="M0 0h31.5v32.3H0z"/>
+    <g fill="#fff">
+      <circle cx="5" cy="5" r="1.1"/><circle cx="12" cy="5" r="1.1"/><circle cx="19" cy="5" r="1.1"/><circle cx="26" cy="5" r="1.1"/>
+      <circle cx="8.5" cy="11" r="1.1"/><circle cx="15.5" cy="11" r="1.1"/><circle cx="22.5" cy="11" r="1.1"/><circle cx="29.5" cy="11" r="1.1"/>
+      <circle cx="5" cy="17" r="1.1"/><circle cx="12" cy="17" r="1.1"/><circle cx="19" cy="17" r="1.1"/><circle cx="26" cy="17" r="1.1"/>
+      <circle cx="8.5" cy="23" r="1.1"/><circle cx="15.5" cy="23" r="1.1"/><circle cx="22.5" cy="23" r="1.1"/><circle cx="29.5" cy="23" r="1.1"/>
+      <circle cx="5" cy="29" r="1.1"/><circle cx="12" cy="29" r="1.1"/><circle cx="19" cy="29" r="1.1"/><circle cx="26" cy="29" r="1.1"/>
+    </g>
+  </g>
+</svg>
