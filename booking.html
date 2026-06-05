@@ -1,0 +1,251 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Booking | Ceylon Backroads</title>
+    <script>try{var n=performance.getEntriesByType&&performance.getEntriesByType("navigation")[0];var r=n&&n.type==="reload";if(!r&&sessionStorage.getItem("ceylon-skip-loader-next")==="true"){document.documentElement.classList.add("skip-loader");sessionStorage.removeItem("ceylon-skip-loader-next")}else if(r){sessionStorage.removeItem("ceylon-skip-loader-next")}}catch(e){}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@100..900&family=Patrick+Hand&family=Caveat:wght@400..700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css?v=20260605-loader-single-mask" />
+    <link rel="stylesheet" href="assets/vendor/lenis/lenis.css" />
+  </head>
+  <body class="inner-page booking-page is-loading">
+    <div class="preloader" aria-label="Loading Ceylon Backroads">
+      <div class="loader-scene">
+        <div class="loader-brand-mark">CB</div>
+        <p class="loader-kicker">Ceylon Backroads</p>
+        <div class="loader-route" aria-hidden="true">
+          <span class="route-line"></span>
+          <svg class="loader-jeep" viewBox="0 0 96 54" role="img" aria-label="4x4 jeep">
+            <path d="M14 34h6l7-14h28l12 14h11c5 0 8 3 8 8v2H10v-2c0-5 2-8 4-8Z" />
+            <path d="M33 22h17l8 12H27l6-12Z" />
+            <circle cx="27" cy="44" r="7" />
+            <circle cx="70" cy="44" r="7" />
+          </svg>
+        </div>
+        <p class="loader-copy">finding hidden routes</p>
+      </div>
+    </div>
+    <header class="site-header scrolled">
+      <nav class="nav" aria-label="Main navigation">
+        <a class="brand" href="index.html" aria-label="Ceylon Backroads home"></a>
+        <div class="nav-links">
+          <div class="nav-group">
+            <strong>Explore</strong>
+            <a href="index.html">Home</a>
+            <a href="tours.html">Tours</a>
+          </div>
+          <div class="nav-group">
+            <strong>Stories</strong>
+            <a href="blog.html">Blog</a>
+          </div>
+          <div class="nav-group">
+            <strong>Company</strong>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="FAQ.html">FAQ</a>
+          </div>
+        </div>
+        <button class="menu-button" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      </nav>
+    </header>
+    <main class="booking-checkout">
+      <section class="booking-shell">
+        <div class="booking-checkout-grid">
+          <section class="booking-form-column" aria-labelledby="bookingTitle">
+            <form id="bookingForm" class="booking-checkout-form">
+              <section class="booking-step booking-stagger" aria-labelledby="contactDetails" style="--booking-delay: 220ms">
+                <div class="booking-step-heading">
+                  <h2 id="contactDetails">Contact</h2>
+                  <a href="contact.html">Need help?</a>
+                </div>
+                <div class="field-grid">
+                  <label class="checkout-field"><input type="text" name="first_name" autocomplete="given-name" placeholder="First name" required /></label>
+                  <label class="checkout-field"><input type="text" name="last_name" autocomplete="family-name" placeholder="Last name" required /></label>
+                </div>
+                <label class="checkout-field checkout-field-wide"><input type="email" name="contact" autocomplete="email" placeholder="Email" required /></label>
+                <label class="checkout-field checkout-phone-field" aria-label="Phone / WhatsApp">
+                  <select id="phoneCountryCode" name="phone_country_code" aria-label="Country code">
+                    <option value="+94" data-country="lk" data-short-label="LK +94">Sri Lanka +94</option>
+                    <option value="+91" data-country="in" data-short-label="IN +91">India +91</option>
+                    <option value="+44" data-country="gb" data-short-label="GB +44">United Kingdom +44</option>
+                    <option value="+1" data-country="us" data-short-label="US +1">United States +1</option>
+                    <option value="+1" data-country="ca" data-short-label="CA +1">Canada +1</option>
+                    <option value="+61" data-country="au" data-short-label="AU +61">Australia +61</option>
+                    <option value="+49" data-country="de" data-short-label="DE +49">Germany +49</option>
+                    <option value="+33" data-country="fr" data-short-label="FR +33">France +33</option>
+                    <option value="+31" data-country="nl" data-short-label="NL +31">Netherlands +31</option>
+                    <option value="+39" data-country="it" data-short-label="IT +39">Italy +39</option>
+                    <option value="+34" data-country="es" data-short-label="ES +34">Spain +34</option>
+                    <option value="+41" data-country="ch" data-short-label="CH +41">Switzerland +41</option>
+                    <option value="+46" data-country="se" data-short-label="SE +46">Sweden +46</option>
+                    <option value="+47" data-country="no" data-short-label="NO +47">Norway +47</option>
+                    <option value="+45" data-country="dk" data-short-label="DK +45">Denmark +45</option>
+                    <option value="+7" data-country="ru" data-short-label="RU +7">Russia +7</option>
+                    <option value="+86" data-country="cn" data-short-label="CN +86">China +86</option>
+                    <option value="+81" data-country="jp" data-short-label="JP +81">Japan +81</option>
+                    <option value="+65" data-country="sg" data-short-label="SG +65">Singapore +65</option>
+                    <option value="+60" data-country="my" data-short-label="MY +60">Malaysia +60</option>
+                    <option value="+971" data-country="ae" data-short-label="AE +971">United Arab Emirates +971</option>
+                    <option value="+974" data-country="qa" data-short-label="QA +974">Qatar +974</option>
+                    <option value="+966" data-country="sa" data-short-label="SA +966">Saudi Arabia +966</option>
+                    <option value="+968" data-country="om" data-short-label="OM +968">Oman +968</option>
+                    <option value="+960" data-country="mv" data-short-label="MV +960">Maldives +960</option>
+                    <option value="+92" data-country="pk" data-short-label="PK +92">Pakistan +92</option>
+                    <option value="+880" data-country="bd" data-short-label="BD +880">Bangladesh +880</option>
+                    <option value="+977" data-country="np" data-short-label="NP +977">Nepal +977</option>
+                    <option value="+27" data-country="za" data-short-label="ZA +27">South Africa +27</option>
+                    <option value="+64" data-country="nz" data-short-label="NZ +64">New Zealand +64</option>
+                  </select>
+                  <input id="phoneNumber" type="tel" name="phone" autocomplete="tel-national" inputmode="tel" placeholder="Phone / WhatsApp" required />
+                </label>
+                <label class="checkout-check"><input type="checkbox" name="updates" checked /> <span>Email me with route updates and offers</span></label>
+              </section>
+
+              <section class="booking-step booking-stagger" aria-labelledby="tripDetails" style="--booking-delay: 520ms">
+                <div class="booking-step-heading">
+                  <h2 id="tripDetails">Trip details</h2>
+                </div>
+                <label class="checkout-field checkout-field-wide"><select id="route" name="route"><option data-price="185" data-description="A highland backroad journey through remote estate roads, waterfall country and dramatic mountain bends." data-image="assets/optimized/route-devils-hero.jpg" data-image-alt="Devil's Staircase Overland Trail mountain road">Devil's Staircase Overland Trail</option><option data-price="225" data-description="A cooler central highlands route with misty roads, tea country, reservoirs and quiet village scenery." data-image="assets/optimized/hulu-home-1445.jpg" data-image-alt="Central Highlands Backroad Trail 4x4 water crossing">Central Highlands Backroad Trail</option><option data-route-slug="kalpitiya-salt-roads" data-price="165" data-description="A coastal backroad experience built around salt flats, fishing villages, open skies and slow scenic stops." data-image="assets/optimized/bg-kalpitiya.jpg" data-image-alt="Kalpitiya Salt Roads coastal landscape">Kalpitiya Salt Roads</option><option data-price="245" data-description="A flexible private loop shaped around your interests, pickup point, pace and the road conditions for your date." data-image="assets/optimized/bg-rathkale.jpg" data-image-alt="Custom hidden Sri Lanka backroad landscape">Custom hidden loop</option></select></label>
+                <div class="field-grid">
+                  <label class="checkout-field booking-date-field" data-booking-calendar>
+                    <input id="bookingDateDisplay" type="text" name="date" autocomplete="off" placeholder="Trip dates" readonly required data-booking-date-display />
+                    <input id="bookingDateStart" type="hidden" name="date_start" data-booking-date-start />
+                    <input id="bookingDateEnd" type="hidden" name="date_end" data-booking-date-end />
+                    <span class="booking-date-icon" aria-hidden="true"></span>
+                    <div class="booking-calendar-popover" data-booking-calendar-popover>
+                      <div class="booking-calendar-head">
+                        <button type="button" aria-label="Previous month" data-calendar-prev></button>
+                        <strong data-calendar-month></strong>
+                        <button type="button" aria-label="Next month" data-calendar-next></button>
+                      </div>
+                      <div class="booking-calendar-weekdays" aria-hidden="true">
+                        <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+                      </div>
+                      <div class="booking-calendar-grid" data-calendar-grid></div>
+                    </div>
+                  </label>
+                  <label class="checkout-field"><input id="vehicles" type="text" inputmode="numeric" pattern="[0-9]*" min="1" max="99" data-default="1" placeholder="Vehicles" autocomplete="off" required /></label>
+                </div>
+                <div class="field-grid">
+                  <label class="checkout-field"><input id="people" type="text" inputmode="numeric" pattern="[0-9]*" min="0" max="99" value="2" data-default="2" placeholder="Travellers" autocomplete="off" required /></label>
+                  <div class="checkout-field booking-passenger-field" data-passenger-menu>
+                    <input id="adultCount" type="hidden" name="adults" value="2" data-passenger-adults />
+                    <input id="childCount" type="hidden" name="children" value="0" data-passenger-children />
+                    <button class="booking-passenger-trigger" type="button" aria-haspopup="dialog" aria-expanded="false" data-passenger-trigger>
+                      <span data-passenger-label>2 adults, 0 children</span>
+                      <span class="booking-select-chevron" aria-hidden="true"></span>
+                    </button>
+                    <div class="booking-passenger-panel" data-passenger-panel>
+                      <div class="booking-passenger-row">
+                        <button type="button" aria-label="Decrease adults" data-passenger-action="decrease" data-passenger-kind="adults">-</button>
+                        <span>adult</span>
+                        <strong data-passenger-count="adults">2</strong>
+                        <button type="button" aria-label="Increase adults" data-passenger-action="increase" data-passenger-kind="adults">+</button>
+                      </div>
+                      <div class="booking-passenger-row">
+                        <button type="button" aria-label="Decrease children" data-passenger-action="decrease" data-passenger-kind="children">-</button>
+                        <span>children</span>
+                        <strong data-passenger-count="children">0</strong>
+                        <button type="button" aria-label="Increase children" data-passenger-action="increase" data-passenger-kind="children">+</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <label class="checkout-field checkout-search-field"><input id="pickupLocation" type="text" name="pickup" placeholder="Pickup location" required /></label>
+                <label class="checkout-field checkout-field-wide"><input id="dropoffLocation" type="text" name="dropoff" placeholder="Drop-off location (optional)" /></label>
+              </section>
+
+              <section class="booking-step booking-stagger" aria-labelledby="travelPreferences" style="--booking-delay: 820ms">
+                <div class="booking-step-heading">
+                  <h2 id="travelPreferences">Travel preferences</h2>
+                </div>
+                <div class="field-grid">
+                  <label class="checkout-field"><select name="style"><option>Slow scenic and cultural</option><option>Remote and rugged</option><option>Family friendly</option><option>Photography focused</option></select></label>
+                  <label class="checkout-field"><select name="accommodation"><option>Comfort guesthouses</option><option>Boutique stays</option><option>Budget friendly</option><option>Luxury upgrades</option></select></label>
+                </div>
+                <label class="checkout-field checkout-field-wide"><textarea name="notes" placeholder="Special requests, interests, dietary needs or route notes"></textarea></label>
+              </section>
+
+              <section class="booking-step payment-step booking-stagger" aria-labelledby="paymentDetails" style="--booking-delay: 1140ms">
+                <h2 id="paymentDetails">Quotation</h2>
+                <p>No payment is taken on this page. We send the final quotation after reviewing availability, pickup location and route conditions.</p>
+              </section>
+
+              <section class="booking-mobile-total booking-stagger" style="--booking-delay: 1360ms" data-booking-mobile-total>
+                <button class="booking-mobile-total-toggle" type="button" aria-expanded="false" aria-controls="bookingMobileSummary" data-booking-mobile-total-toggle>
+                  <span class="booking-mobile-total-label" data-booking-mobile-total-label>Total Estimation</span>
+                  <span class="booking-mobile-total-price">
+                    <small data-booking-mobile-currency>USD</small>
+                    <strong data-booking-mobile-price>$0</strong>
+                    <span class="booking-mobile-total-chevron" aria-hidden="true"></span>
+                  </span>
+                </button>
+                <div id="bookingMobileSummary" class="booking-mobile-summary-panel" data-booking-mobile-summary-panel>
+                  <div class="booking-mobile-summary-inner">
+                    <div class="booking-summary-product">
+                      <figure class="booking-summary-image">
+                        <img data-booking-mobile-image src="assets/optimized/route-devils-hero.jpg" alt="Devil's Staircase Overland Trail mountain road" />
+                      </figure>
+                      <div class="booking-summary-product-copy">
+                        <h2 data-booking-mobile-route>Devil's Staircase Overland Trail</h2>
+                        <p class="booking-summary-route-description" data-booking-mobile-description>A highland backroad journey through remote estate roads, waterfall country and dramatic mountain bends.</p>
+                      </div>
+                      <strong class="booking-product-price" data-booking-mobile-product-price>$0</strong>
+                    </div>
+                    <div class="summary-list">
+                      <div class="summary-line"><span data-booking-mobile-pickup-label>Pickup <small aria-hidden="true">?</small></span><strong data-booking-mobile-pickup>N/A</strong></div>
+                      <div class="summary-line"><span data-booking-mobile-dropoff-label>Drop-off</span><strong data-booking-mobile-dropoff>N/A</strong></div>
+                    </div>
+                    <div class="booking-price-row">
+                      <span data-booking-mobile-estimate-label>Estimate</span>
+                      <strong><small data-booking-mobile-estimate-currency>USD</small><span class="price" data-booking-mobile-estimate-price>$0</span></strong>
+                    </div>
+                    <div class="summary-line booking-pp-price-row">
+                      <strong><span data-booking-mobile-pp-label>per person</span><small data-booking-mobile-pp-currency>USD</small><span data-booking-mobile-pp-price>$0</span></strong>
+                    </div>
+                    <p class="booking-estimate-note" data-booking-mobile-note>The above prices are only an estimation for the basic package with no extra options/requests, the final price may increase/decrease in the final quotation depending on the requests and other circumstances.</p>
+                  </div>
+                </div>
+              </section>
+
+              <button class="booking-submit booking-stagger" style="--booking-delay: 1460ms" type="submit">Request quotation</button>
+            </form>
+          </section>
+
+          <aside class="booking-summary-column" aria-label="Route summary">
+            <div class="booking-summary-card">
+              <div class="booking-summary-product booking-stagger" style="--booking-delay: 360ms">
+                <figure class="booking-summary-image">
+                  <img id="bookingRouteImage" src="assets/optimized/route-devils-hero.jpg" alt="Devil's Staircase Overland Trail mountain road" />
+                </figure>
+                <div class="booking-summary-product-copy">
+                  <h2 id="summaryRoute">Devil's Staircase Overland Trail</h2>
+                  <p id="summaryRouteDescription" class="booking-summary-route-description">A highland backroad journey through remote estate roads, waterfall country and dramatic mountain bends.</p>
+                </div>
+                <strong id="bookingProductPrice" class="booking-product-price">$0</strong>
+              </div>
+              <div class="summary-list booking-stagger" style="--booking-delay: 660ms">
+                <div class="summary-line"><span id="summaryPickupLabel">Pickup <small aria-hidden="true">?</small></span><strong id="summaryPickup">N/A</strong></div>
+                <div class="summary-line"><span id="summaryDropoffLabel">Drop-off</span><strong id="summaryDropoff">N/A</strong></div>
+              </div>
+              <div class="booking-price-row booking-stagger" style="--booking-delay: 980ms">
+                <span id="bookingEstimateLabel">Estimate</span>
+                <strong><small id="bookingCurrencyCode">USD</small><span id="bookingTotal" class="price">$0</span></strong>
+              </div>
+              <div class="summary-line booking-pp-price-row booking-stagger" style="--booking-delay: 1300ms">
+                <strong><span id="bookingPpPriceLabel">per person</span><small id="bookingPpCurrencyCode">USD</small><span id="bookingPpPrice">$0</span></strong>
+              </div>
+              <p class="booking-estimate-note booking-stagger" style="--booking-delay: 1620ms">The above prices are only an estimation for the basic package with no extra options/requests, the final price may increase/decrease in the final quotation depending on the requests and other circumstances.</p>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </main>
+    <footer class="footer"><div class="container footer-bottom"><span>Copyright 2026 Ceylon Backroads</span><a href="contact.html">Need help choosing?</a></div></footer>
+    <script src="assets/vendor/lenis/lenis.min.js"></script>
+    <script src="script.js?v=20260605-loader-single-mask"></script>
+  </body>
+</html>
