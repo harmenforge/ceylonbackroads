@@ -5005,6 +5005,12 @@ if (bookingForm) {
   const ppPrice = document.querySelector("#bookingPpPrice");
   const summaryPickup = document.querySelector("#summaryPickup");
   const summaryDropoff = document.querySelector("#summaryDropoff");
+  const bookingEmailRoute = bookingForm.querySelector("[data-booking-email-route]");
+  const bookingEmailTravellers = bookingForm.querySelector("[data-booking-email-travellers]");
+  const bookingEmailTotal = bookingForm.querySelector("[data-booking-email-total]");
+  const bookingEmailPerPerson = bookingForm.querySelector("[data-booking-email-per-person]");
+  const bookingEmailCurrency = bookingForm.querySelector("[data-booking-email-currency]");
+  const bookingEmailReplyTo = bookingForm.querySelector("[data-booking-email-replyto]");
   const mobileTotal = document.querySelector("[data-booking-mobile-total]");
   const mobileTotalToggle = document.querySelector("[data-booking-mobile-total-toggle]");
   const mobileSummaryPanel = document.querySelector("[data-booking-mobile-summary-panel]");
@@ -5095,6 +5101,7 @@ if (bookingForm) {
     const vehicleCount = Math.max(vehicleQuantity?.read() ?? readBookingQuantity(vehicles), getRequiredBookingVehicles(readTravelerCount()), 1);
     const adultCount = Math.max(Number(bookingForm.querySelector("[data-passenger-adults]")?.value || 0), 0);
     const childCount = Math.max(Number(bookingForm.querySelector("[data-passenger-children]")?.value || 0), 0);
+    const travelerMix = `${adultCount} adult${adultCount === 1 ? "" : "s"}, ${childCount} child${childCount === 1 ? "" : "ren"}`;
     const vehicleEstimateLkr = vehicleCount * getBookingVehicleCostLkr(selectedRoute);
     const passengerEstimateLkr = getBookingPassengerCostLkr(selectedRoute, adultCount, childCount);
     const estimateLkr = vehicleEstimateLkr + passengerEstimateLkr;
@@ -5122,6 +5129,11 @@ if (bookingForm) {
     }
     if (summaryPickup) summaryPickup.textContent = pickupText;
     if (summaryDropoff) summaryDropoff.textContent = dropoffText;
+    if (bookingEmailRoute) bookingEmailRoute.value = routeName;
+    if (bookingEmailTravellers) bookingEmailTravellers.value = travelerMix;
+    if (bookingEmailTotal) bookingEmailTotal.value = `${formattedEstimate.code} ${formattedEstimate.text}`.trim();
+    if (bookingEmailPerPerson) bookingEmailPerPerson.value = ppPriceLkr === null ? copy.empty : `${formattedEstimate.code} ${formattedPpPrice}`.trim();
+    if (bookingEmailCurrency) bookingEmailCurrency.value = formattedEstimate.code;
 
     if (mobileFields.totalLabel) mobileFields.totalLabel.textContent = copy.totalEstimation || "Total Estimation";
     if (mobileFields.currency) mobileFields.currency.textContent = formattedEstimate.code;
@@ -5177,23 +5189,39 @@ if (bookingForm) {
   syncVehicleCountToTravelers();
   updateQuote();
 
-  bookingForm.addEventListener("submit", (event) => {
+  bookingForm.addEventListener("submit", async (event) => {
     event.preventDefault();
     const submit = bookingForm.querySelector("button[type='submit']");
-    submit.textContent = getBookingCopy().requestSent;
+    if (submit?.disabled) return;
+
+    const formData = new FormData(bookingForm);
+    if (String(formData.get("_honey") || "").trim()) return;
+
+    submit.textContent = "Sending...";
     submit.disabled = true;
-    setTimeout(() => {
-      submit.textContent = getBookingCopy().requestQuotation;
-      submit.disabled = false;
-      bookingForm.reset();
-      bookingForm.querySelectorAll("select").forEach((select) => {
-        select.dispatchEvent(new Event("change", { bubbles: true }));
-      });
-      travelerQuantity?.write(readTravelerCount());
-      syncPassengerTotals?.();
-      syncVehicleCountToTravelers();
+
+    try {
       updateQuote();
-    }, 1800);
+      if (bookingEmailReplyTo) bookingEmailReplyTo.value = String(bookingForm.querySelector("[name='contact']")?.value || "").trim();
+      await submitFormspreeForm(bookingForm, new FormData(bookingForm));
+      submit.textContent = getBookingCopy().requestSent;
+      setTimeout(() => {
+        submit.textContent = getBookingCopy().requestQuotation;
+        submit.disabled = false;
+        bookingForm.reset();
+        bookingForm.querySelectorAll("select").forEach((select) => {
+          select.dispatchEvent(new Event("change", { bubbles: true }));
+        });
+        travelerQuantity?.write(readTravelerCount());
+        syncPassengerTotals?.();
+        syncVehicleCountToTravelers();
+        updateQuote();
+      }, 1800);
+    } catch (error) {
+      console.error(error);
+      submit.textContent = "Try Again";
+      submit.disabled = false;
+    }
   });
 }
 
@@ -5201,6 +5229,26 @@ function closeBookingSelectMenu(menu) {
   const trigger = menu.querySelector("[data-booking-select-trigger]");
   menu.classList.remove("is-open");
   if (trigger) trigger.setAttribute("aria-expanded", "false");
+}
+
+async function submitFormspreeForm(form, formData) {
+  const response = await fetch(form.action, {
+    method: "POST",
+    headers: {
+      Accept: "application/json"
+    },
+    body: formData
+  });
+  const result = await response.json().catch(() => ({}));
+
+  if (!response.ok || result.ok === false) {
+    const formspreeError = Array.isArray(result.errors) && result.errors[0]?.message
+      ? result.errors[0].message
+      : "";
+    throw new Error(formspreeError || result.error || "Form submission failed");
+  }
+
+  return result;
 }
 
 function openBookingSelectMenu(menu) {
@@ -5488,6 +5536,7 @@ if (contactForm) {
   });
 
   contactForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
     if (contactSubmitButton?.disabled) return;
 
     const formData = new FormData(contactForm);
@@ -5497,7 +5546,7 @@ if (contactForm) {
     const senderEmail = String(formData.get("email") || "").trim();
     contactForm.querySelector('input[name="_subject"]')?.setAttribute("value", `Ceylon Backroads contact: ${topic}`);
     contactForm.querySelector('input[name="_replyto"]')?.remove();
-    contactForm.querySelector('input[name="_url"]')?.remove();
+    contactForm.querySelector('input[name="page_url"]')?.remove();
 
     const replyToInput = document.createElement("input");
     replyToInput.type = "hidden";
@@ -5507,38 +5556,15 @@ if (contactForm) {
 
     const urlInput = document.createElement("input");
     urlInput.type = "hidden";
-    urlInput.name = "_url";
+    urlInput.name = "page_url";
     urlInput.value = window.location.href;
     contactForm.appendChild(urlInput);
-
-    if (!contactForm.action.includes("/ajax/")) {
-      if (contactSubmitButton) contactSubmitButton.disabled = true;
-      setContactSubmitLabel("Sending...");
-      return;
-    }
-
-    event.preventDefault();
 
     if (contactSubmitButton) contactSubmitButton.disabled = true;
     setContactSubmitLabel("Sending...");
 
-    formData.set("_subject", `Ceylon Backroads contact: ${topic}`);
-    formData.set("_replyto", senderEmail);
-    formData.set("_url", window.location.href);
-
     try {
-      const response = await fetch(contactForm.action, {
-        method: "POST",
-        headers: {
-          Accept: "application/json"
-        },
-        body: formData
-      });
-      const result = await response.json().catch(() => ({}));
-
-      if (!response.ok || String(result.success).toLowerCase() === "false") {
-        throw new Error(result.message || "Contact form submission failed");
-      }
+      await submitFormspreeForm(contactForm, new FormData(contactForm));
       contactForm.reset();
       resetContactTopicMenus();
       setContactSubmitLabel("Message Sent");
