@@ -4763,6 +4763,7 @@ function initBookingCalendar(form) {
   let startDate = null;
   let endDate = null;
   let lastDirectDatePointerAt = 0;
+  let suppressCalendarOpenUntil = 0;
   const mobileCalendarQuery = window.matchMedia("(max-width: 760px)");
 
   const monthFormatter = new Intl.DateTimeFormat("en", { month: "long", year: "numeric" });
@@ -4883,6 +4884,14 @@ function initBookingCalendar(form) {
     display.setAttribute("aria-expanded", "false");
   }
 
+  function finishDateSelection() {
+    suppressCalendarOpenUntil = performance.now() + 700;
+    closeCalendar();
+    if (document.activeElement === display || calendar.contains(document.activeElement)) {
+      display.blur();
+    }
+  }
+
   function selectDate(date) {
     const fixedDays = getFixedRouteDays();
     if (fixedDays) {
@@ -4891,6 +4900,7 @@ function initBookingCalendar(form) {
       visibleMonth = new Date(startDate.getFullYear(), startDate.getMonth(), 1);
       syncDisplay();
       renderCalendar();
+      finishDateSelection();
       return;
     }
 
@@ -4903,6 +4913,7 @@ function initBookingCalendar(form) {
 
     syncDisplay();
     renderCalendar();
+    if (endDate) finishDateSelection();
   }
 
   display.setAttribute("aria-haspopup", "dialog");
@@ -4912,10 +4923,12 @@ function initBookingCalendar(form) {
   }, { passive: true });
   display.addEventListener("click", (event) => {
     event.stopPropagation();
+    if (performance.now() < suppressCalendarOpenUntil) return;
     lastDirectDatePointerAt = performance.now();
     openCalendar();
   });
   display.addEventListener("focus", () => {
+    if (performance.now() < suppressCalendarOpenUntil) return;
     if (mobileCalendarQuery.matches && performance.now() - lastDirectDatePointerAt > 500) return;
     openCalendar();
   });
