@@ -4762,9 +4762,7 @@ function initBookingCalendar(form) {
   let visibleMonth = new Date(today.getFullYear(), today.getMonth(), 1);
   let startDate = null;
   let endDate = null;
-  let lastDirectDatePointerAt = 0;
   let suppressCalendarOpenUntil = 0;
-  const mobileCalendarQuery = window.matchMedia("(max-width: 760px)");
 
   const monthFormatter = new Intl.DateTimeFormat("en", { month: "long", year: "numeric" });
   const displayFormatter = new Intl.DateTimeFormat("en", { month: "short", day: "numeric", year: "numeric" });
@@ -4918,18 +4916,15 @@ function initBookingCalendar(form) {
 
   display.setAttribute("aria-haspopup", "dialog");
   display.setAttribute("aria-expanded", "false");
-  display.addEventListener("pointerdown", () => {
-    lastDirectDatePointerAt = performance.now();
-  }, { passive: true });
   display.addEventListener("click", (event) => {
     event.stopPropagation();
     if (performance.now() < suppressCalendarOpenUntil) return;
-    lastDirectDatePointerAt = performance.now();
     openCalendar();
   });
-  display.addEventListener("focus", () => {
+  display.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter" && event.key !== " " && event.key !== "ArrowDown") return;
+    event.preventDefault();
     if (performance.now() < suppressCalendarOpenUntil) return;
-    if (mobileCalendarQuery.matches && performance.now() - lastDirectDatePointerAt > 500) return;
     openCalendar();
   });
 
@@ -4966,6 +4961,10 @@ function initBookingCalendar(form) {
     if (calendar.contains(event.target)) return;
     closeCalendar();
   });
+  document.addEventListener("pointerdown", (event) => {
+    if (calendar.contains(event.target)) return;
+    closeCalendar();
+  }, { passive: true });
 
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") closeCalendar();
