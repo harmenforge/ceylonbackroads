@@ -5218,9 +5218,6 @@ if (bookingForm) {
     const submit = bookingForm.querySelector("button[type='submit']");
     if (submit?.disabled) return;
 
-    const formData = new FormData(bookingForm);
-    if (String(formData.get("_honey") || "").trim()) return;
-
     submit.textContent = "Sending...";
     submit.disabled = true;
 
@@ -5571,7 +5568,6 @@ if (contactForm) {
     if (contactSubmitButton?.disabled) return;
 
     const formData = new FormData(contactForm);
-    if (String(formData.get("_honey") || "").trim()) return;
 
     const topic = String(formData.get("topic") || "General message").trim() || "General message";
     const senderName = String(formData.get("name") || "New visitor").trim() || "New visitor";
