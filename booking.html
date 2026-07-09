@@ -31,7 +31,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@100..900&family=Patrick+Hand&family=Caveat:wght@400..700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=20260709-formspree-booking-validation" />
+    <link rel="stylesheet" href="styles.css?v=20260709-formspree-subject-clean" />
   </head>
   <body class="inner-page booking-page is-loading">
     <div class="preloader" aria-label="Loading Ceylon Backroads">
@@ -67,7 +67,7 @@
         <div class="booking-checkout-grid">
           <section class="booking-form-column" aria-labelledby="bookingTitle">
             <form id="bookingForm" class="booking-checkout-form" action="https://formspree.io/f/mlgyyzkl" method="POST">
-              <input type="hidden" name="_subject" value="New Ceylon Backroads booking request" />
+              <input type="hidden" name="subject" value="{{ route_name }} - {{ first_name }} {{ last_name }}" data-booking-email-subject />
               <input type="hidden" name="source_page" value="https://ceylonbackroads.com/booking.html" />
               <input type="hidden" name="route_name" data-booking-email-route />
               <input type="hidden" name="traveller_mix" data-booking-email-travellers />
@@ -308,6 +308,6 @@
         </div>
       </div>
     </footer>
-    <script src="script.js?v=20260709-formspree-booking-validation"></script>
+    <script src="script.js?v=20260709-formspree-subject-clean"></script>
   </body>
 </html>
