@@ -4763,6 +4763,7 @@ function initBookingCalendar(form) {
   let startDate = null;
   let endDate = null;
   let suppressCalendarOpenUntil = 0;
+  let directDatePointerUntil = 0;
 
   const monthFormatter = new Intl.DateTimeFormat("en", { month: "long", year: "numeric" });
   const displayFormatter = new Intl.DateTimeFormat("en", { month: "short", day: "numeric", year: "numeric" });
@@ -4916,9 +4917,19 @@ function initBookingCalendar(form) {
 
   display.setAttribute("aria-haspopup", "dialog");
   display.setAttribute("aria-expanded", "false");
+  display.addEventListener("pointerdown", (event) => {
+    if (event.target !== display) return;
+    directDatePointerUntil = performance.now() + 450;
+  }, { passive: true });
+  display.addEventListener("touchstart", (event) => {
+    if (event.target !== display) return;
+    directDatePointerUntil = performance.now() + 450;
+  }, { passive: true });
   display.addEventListener("click", (event) => {
     event.stopPropagation();
     if (performance.now() < suppressCalendarOpenUntil) return;
+    if (performance.now() > directDatePointerUntil) return;
+    directDatePointerUntil = 0;
     openCalendar();
   });
   display.addEventListener("keydown", (event) => {
