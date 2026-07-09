@@ -5011,6 +5011,7 @@ if (bookingForm) {
   const bookingEmailPerPerson = bookingForm.querySelector("[data-booking-email-per-person]");
   const bookingEmailCurrency = bookingForm.querySelector("[data-booking-email-currency]");
   const bookingEmailReplyTo = bookingForm.querySelector("[data-booking-email-replyto]");
+  const bookingEmailSubject = bookingForm.querySelector("[data-booking-email-subject]");
   const mobileTotal = document.querySelector("[data-booking-mobile-total]");
   const mobileTotalToggle = document.querySelector("[data-booking-mobile-total-toggle]");
   const mobileSummaryPanel = document.querySelector("[data-booking-mobile-summary-panel]");
@@ -5203,6 +5204,13 @@ if (bookingForm) {
     try {
       updateQuote();
       if (bookingEmailReplyTo) bookingEmailReplyTo.value = String(bookingForm.querySelector("[name='contact']")?.value || "").trim();
+      if (bookingEmailSubject) {
+        const firstName = String(bookingForm.querySelector("[name='first_name']")?.value || "").trim();
+        const lastName = String(bookingForm.querySelector("[name='last_name']")?.value || "").trim();
+        const customerName = [firstName, lastName].filter(Boolean).join(" ") || "New guest";
+        const routeName = bookingEmailRoute?.value || route.selectedOptions[0]?.textContent || "Selected route";
+        bookingEmailSubject.value = `${routeName} - ${customerName}`;
+      }
       await submitFormspreeForm(bookingForm, new FormData(bookingForm));
       submit.textContent = getBookingCopy().requestSent;
       setTimeout(() => {
@@ -5542,9 +5550,11 @@ if (contactForm) {
     const formData = new FormData(contactForm);
     if (String(formData.get("_honey") || "").trim()) return;
 
-    const topic = String(formData.get("topic") || "Contact message").trim();
+    const topic = String(formData.get("topic") || "General message").trim() || "General message";
+    const senderName = String(formData.get("name") || "New visitor").trim() || "New visitor";
     const senderEmail = String(formData.get("email") || "").trim();
-    contactForm.querySelector('input[name="_subject"]')?.setAttribute("value", `Ceylon Backroads contact: ${topic}`);
+    const contactSubjectInput = contactForm.querySelector("[data-contact-email-subject]");
+    if (contactSubjectInput) contactSubjectInput.value = `${topic} - ${senderName}`;
     contactForm.querySelector('input[name="_replyto"]')?.remove();
     contactForm.querySelector('input[name="page_url"]')?.remove();
 
