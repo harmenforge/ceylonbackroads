@@ -17,7 +17,7 @@ function normalizeRouteSlug(value = "") {
   return String(value)
     .trim()
     .toLowerCase()
-    .replace(/['’]/g, "")
+    .replace(/['â€™]/g, "")
     .replace(/&/g, "and")
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "");
@@ -1531,12 +1531,12 @@ if (routeGalleryCards.length) {
     lightbox.setAttribute("aria-modal", "true");
     lightbox.setAttribute("aria-label", "Route gallery image viewer");
     lightbox.innerHTML = `
-      <button class="gallery-lightbox-button gallery-lightbox-close" type="button" aria-label="Close image viewer">×</button>
+      <button class="gallery-lightbox-button gallery-lightbox-close" type="button" aria-label="Close image viewer">Ã—</button>
       <figure class="gallery-lightbox-figure">
         <img class="gallery-lightbox-image" alt="" />
       </figure>
-      <button class="gallery-lightbox-button gallery-lightbox-nav gallery-lightbox-prev" type="button" aria-label="Previous image">‹</button>
-      <button class="gallery-lightbox-button gallery-lightbox-nav gallery-lightbox-next" type="button" aria-label="Next image">›</button>
+      <button class="gallery-lightbox-button gallery-lightbox-nav gallery-lightbox-prev" type="button" aria-label="Previous image">â€¹</button>
+      <button class="gallery-lightbox-button gallery-lightbox-nav gallery-lightbox-next" type="button" aria-label="Next image">â€º</button>
     `;
     body.append(lightbox);
 
@@ -3388,19 +3388,19 @@ const manifestoTranslations = {
     body: "These are the roads we remember by smell, light, dust, water, wind, silence, and the faces that appear when the jeep slows down.",
   },
   fr: {
-    kicker: "La beauté sans la file d'attente habituelle",
-    heading: "L'île est plus grande que la carte touristique.",
-    body: "Ce sont les routes dont nous nous souvenons par l'odeur, la lumière, la poussière, l'eau, le vent, le silence et les visages qui apparaissent quand la jeep ralentit.",
+    kicker: "La beautÃ© sans la file d'attente habituelle",
+    heading: "L'Ã®le est plus grande que la carte touristique.",
+    body: "Ce sont les routes dont nous nous souvenons par l'odeur, la lumiÃ¨re, la poussiÃ¨re, l'eau, le vent, le silence et les visages qui apparaissent quand la jeep ralentit.",
   },
   ru: {
-    kicker: "Красота без привычной очереди",
-    heading: "Остров больше туристической карты.",
-    body: "Это дороги, которые мы помним по запаху, свету, пыли, воде, ветру, тишине и лицам, появляющимся, когда джип замедляется.",
+    kicker: "ÐšÑ€Ð°ÑÐ¾Ñ‚Ð° Ð±ÐµÐ· Ð¿Ñ€Ð¸Ð²Ñ‹Ñ‡Ð½Ð¾Ð¹ Ð¾Ñ‡ÐµÑ€ÐµÐ´Ð¸",
+    heading: "ÐžÑÑ‚Ñ€Ð¾Ð² Ð±Ð¾Ð»ÑŒÑˆÐµ Ñ‚ÑƒÑ€Ð¸ÑÑ‚Ð¸Ñ‡ÐµÑÐºÐ¾Ð¹ ÐºÐ°Ñ€Ñ‚Ñ‹.",
+    body: "Ð­Ñ‚Ð¾ Ð´Ð¾Ñ€Ð¾Ð³Ð¸, ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ðµ Ð¼Ñ‹ Ð¿Ð¾Ð¼Ð½Ð¸Ð¼ Ð¿Ð¾ Ð·Ð°Ð¿Ð°Ñ…Ñƒ, ÑÐ²ÐµÑ‚Ñƒ, Ð¿Ñ‹Ð»Ð¸, Ð²Ð¾Ð´Ðµ, Ð²ÐµÑ‚Ñ€Ñƒ, Ñ‚Ð¸ÑˆÐ¸Ð½Ðµ Ð¸ Ð»Ð¸Ñ†Ð°Ð¼, Ð¿Ð¾ÑÐ²Ð»ÑÑŽÑ‰Ð¸Ð¼ÑÑ, ÐºÐ¾Ð³Ð´Ð° Ð´Ð¶Ð¸Ð¿ Ð·Ð°Ð¼ÐµÐ´Ð»ÑÐµÑ‚ÑÑ.",
   },
   de: {
-    kicker: "Schönheit ohne die übliche Warteschlange",
-    heading: "Die Insel ist größer als die Touristenkarte.",
-    body: "Das sind die Straßen, an die wir uns durch Geruch, Licht, Staub, Wasser, Wind, Stille und die Gesichter erinnern, die erscheinen, wenn der Jeep langsamer wird.",
+    kicker: "SchÃ¶nheit ohne die Ã¼bliche Warteschlange",
+    heading: "Die Insel ist grÃ¶ÃŸer als die Touristenkarte.",
+    body: "Das sind die StraÃŸen, an die wir uns durch Geruch, Licht, Staub, Wasser, Wind, Stille und die Gesichter erinnern, die erscheinen, wenn der Jeep langsamer wird.",
   },
 };
 let manifestoHeadingWords = Array.from(document.querySelectorAll(".manifesto-copy h2.scroll-highlight .highlight-word"));
@@ -4575,53 +4575,53 @@ const bookingTranslations = {
   },
   fr: {
     pickup: "Prise en charge",
-    dropoff: "Dépose",
+    dropoff: "DÃ©pose",
     estimate: "Estimation",
     totalEstimation: "Estimation totale",
     empty: "N/A",
     requestQuotation: "Demander un devis",
-    requestSent: "Demande envoyée",
+    requestSent: "Demande envoyÃ©e",
     travelers: (count) => `${count} voyageur${count === 1 ? "" : "s"}`,
     days: (count) => `${count} jour${count === 1 ? "" : "s"}`,
     routeDescriptions: [
-      "Un itinéraire de montagne par des routes de plantation isolées, des cascades et des virages spectaculaires.",
-      "Un parcours plus frais dans les hauts plateaux, avec routes brumeuses, plantations de thé, réservoirs et villages calmes.",
-      "Une route côtière lente autour des salines, des villages de pêcheurs, des grands ciels et des arrêts panoramiques.",
-      "Une boucle privée flexible adaptée à vos centres d'intérêt, au lieu de prise en charge, au rythme et aux conditions de route."
+      "Un itinÃ©raire de montagne par des routes de plantation isolÃ©es, des cascades et des virages spectaculaires.",
+      "Un parcours plus frais dans les hauts plateaux, avec routes brumeuses, plantations de thÃ©, rÃ©servoirs et villages calmes.",
+      "Une route cÃ´tiÃ¨re lente autour des salines, des villages de pÃªcheurs, des grands ciels et des arrÃªts panoramiques.",
+      "Une boucle privÃ©e flexible adaptÃ©e Ã  vos centres d'intÃ©rÃªt, au lieu de prise en charge, au rythme et aux conditions de route."
     ]
   },
   de: {
     pickup: "Abholung",
     dropoff: "Zielort",
-    estimate: "Schätzung",
-    totalEstimation: "Gesamtschätzung",
+    estimate: "SchÃ¤tzung",
+    totalEstimation: "GesamtschÃ¤tzung",
     empty: "N/A",
     requestQuotation: "Angebot anfragen",
     requestSent: "Anfrage gesendet",
     travelers: (count) => `${count} Reisende${count === 1 ? "r" : ""}`,
     days: (count) => `${count} Tag${count === 1 ? "" : "e"}`,
     routeDescriptions: [
-      "Eine Hochlandreise über abgelegene Plantagenstraßen, durch Wasserfallland und dramatische Bergkurven.",
-      "Eine kühlere Route im zentralen Hochland mit nebligen Straßen, Teeland, Stauseen und ruhigen Dörfern.",
-      "Eine Küstenroute mit Salzfeldern, Fischerdörfern, weitem Himmel und entspannten Aussichtspausen.",
-      "Eine flexible private Runde, abgestimmt auf Interessen, Abholort, Tempo und Straßenbedingungen am Reisedatum."
+      "Eine Hochlandreise Ã¼ber abgelegene PlantagenstraÃŸen, durch Wasserfallland und dramatische Bergkurven.",
+      "Eine kÃ¼hlere Route im zentralen Hochland mit nebligen StraÃŸen, Teeland, Stauseen und ruhigen DÃ¶rfern.",
+      "Eine KÃ¼stenroute mit Salzfeldern, FischerdÃ¶rfern, weitem Himmel und entspannten Aussichtspausen.",
+      "Eine flexible private Runde, abgestimmt auf Interessen, Abholort, Tempo und StraÃŸenbedingungen am Reisedatum."
     ]
   },
   ru: {
-    pickup: "Место подачи",
-    dropoff: "Место высадки",
-    estimate: "Оценка",
-    totalEstimation: "Общая оценка",
+    pickup: "ÐœÐµÑÑ‚Ð¾ Ð¿Ð¾Ð´Ð°Ñ‡Ð¸",
+    dropoff: "ÐœÐµÑÑ‚Ð¾ Ð²Ñ‹ÑÐ°Ð´ÐºÐ¸",
+    estimate: "ÐžÑ†ÐµÐ½ÐºÐ°",
+    totalEstimation: "ÐžÐ±Ñ‰Ð°Ñ Ð¾Ñ†ÐµÐ½ÐºÐ°",
     empty: "N/A",
-    requestQuotation: "Запросить расчет",
-    requestSent: "Запрос отправлен",
-    travelers: (count) => `${count} ${count === 1 ? "путешественник" : "путешественника"}`,
-    days: (count) => `${count} ${count === 1 ? "день" : "дня"}`,
+    requestQuotation: "Ð—Ð°Ð¿Ñ€Ð¾ÑÐ¸Ñ‚ÑŒ Ñ€Ð°ÑÑ‡ÐµÑ‚",
+    requestSent: "Ð—Ð°Ð¿Ñ€Ð¾Ñ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½",
+    travelers: (count) => `${count} ${count === 1 ? "Ð¿ÑƒÑ‚ÐµÑˆÐµÑÑ‚Ð²ÐµÐ½Ð½Ð¸Ðº" : "Ð¿ÑƒÑ‚ÐµÑˆÐµÑÑ‚Ð²ÐµÐ½Ð½Ð¸ÐºÐ°"}`,
+    days: (count) => `${count} ${count === 1 ? "Ð´ÐµÐ½ÑŒ" : "Ð´Ð½Ñ"}`,
     routeDescriptions: [
-      "Горный маршрут по удаленным дорогам плантаций, краю водопадов и выразительным серпантинам.",
-      "Более прохладный маршрут по центральному нагорью с туманными дорогами, чайными пейзажами, водохранилищами и тихими деревнями.",
-      "Прибрежный маршрут среди солончаков, рыбацких деревень, открытого неба и неспешных живописных остановок.",
-      "Гибкая частная петля под ваши интересы, место подачи, темп поездки и дорожные условия на выбранную дату."
+      "Ð“Ð¾Ñ€Ð½Ñ‹Ð¹ Ð¼Ð°Ñ€ÑˆÑ€ÑƒÑ‚ Ð¿Ð¾ ÑƒÐ´Ð°Ð»ÐµÐ½Ð½Ñ‹Ð¼ Ð´Ð¾Ñ€Ð¾Ð³Ð°Ð¼ Ð¿Ð»Ð°Ð½Ñ‚Ð°Ñ†Ð¸Ð¹, ÐºÑ€Ð°ÑŽ Ð²Ð¾Ð´Ð¾Ð¿Ð°Ð´Ð¾Ð² Ð¸ Ð²Ñ‹Ñ€Ð°Ð·Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ð¼ ÑÐµÑ€Ð¿Ð°Ð½Ñ‚Ð¸Ð½Ð°Ð¼.",
+      "Ð‘Ð¾Ð»ÐµÐµ Ð¿Ñ€Ð¾Ñ…Ð»Ð°Ð´Ð½Ñ‹Ð¹ Ð¼Ð°Ñ€ÑˆÑ€ÑƒÑ‚ Ð¿Ð¾ Ñ†ÐµÐ½Ñ‚Ñ€Ð°Ð»ÑŒÐ½Ð¾Ð¼Ñƒ Ð½Ð°Ð³Ð¾Ñ€ÑŒÑŽ Ñ Ñ‚ÑƒÐ¼Ð°Ð½Ð½Ñ‹Ð¼Ð¸ Ð´Ð¾Ñ€Ð¾Ð³Ð°Ð¼Ð¸, Ñ‡Ð°Ð¹Ð½Ñ‹Ð¼Ð¸ Ð¿ÐµÐ¹Ð·Ð°Ð¶Ð°Ð¼Ð¸, Ð²Ð¾Ð´Ð¾Ñ…Ñ€Ð°Ð½Ð¸Ð»Ð¸Ñ‰Ð°Ð¼Ð¸ Ð¸ Ñ‚Ð¸Ñ…Ð¸Ð¼Ð¸ Ð´ÐµÑ€ÐµÐ²Ð½ÑÐ¼Ð¸.",
+      "ÐŸÑ€Ð¸Ð±Ñ€ÐµÐ¶Ð½Ñ‹Ð¹ Ð¼Ð°Ñ€ÑˆÑ€ÑƒÑ‚ ÑÑ€ÐµÐ´Ð¸ ÑÐ¾Ð»Ð¾Ð½Ñ‡Ð°ÐºÐ¾Ð², Ñ€Ñ‹Ð±Ð°Ñ†ÐºÐ¸Ñ… Ð´ÐµÑ€ÐµÐ²ÐµÐ½ÑŒ, Ð¾Ñ‚ÐºÑ€Ñ‹Ñ‚Ð¾Ð³Ð¾ Ð½ÐµÐ±Ð° Ð¸ Ð½ÐµÑÐ¿ÐµÑˆÐ½Ñ‹Ñ… Ð¶Ð¸Ð²Ð¾Ð¿Ð¸ÑÐ½Ñ‹Ñ… Ð¾ÑÑ‚Ð°Ð½Ð¾Ð²Ð¾Ðº.",
+      "Ð“Ð¸Ð±ÐºÐ°Ñ Ñ‡Ð°ÑÑ‚Ð½Ð°Ñ Ð¿ÐµÑ‚Ð»Ñ Ð¿Ð¾Ð´ Ð²Ð°ÑˆÐ¸ Ð¸Ð½Ñ‚ÐµÑ€ÐµÑÑ‹, Ð¼ÐµÑÑ‚Ð¾ Ð¿Ð¾Ð´Ð°Ñ‡Ð¸, Ñ‚ÐµÐ¼Ð¿ Ð¿Ð¾ÐµÐ·Ð´ÐºÐ¸ Ð¸ Ð´Ð¾Ñ€Ð¾Ð¶Ð½Ñ‹Ðµ ÑƒÑÐ»Ð¾Ð²Ð¸Ñ Ð½Ð° Ð²Ñ‹Ð±Ñ€Ð°Ð½Ð½ÑƒÑŽ Ð´Ð°Ñ‚Ñƒ."
     ]
   }
 };
@@ -5768,6 +5768,51 @@ if (termsIndexLinks.length) {
   window.addEventListener("scroll", requestTermsUpdate, { passive: true });
   window.addEventListener("resize", requestTermsUpdate);
   updateActiveTermsSection();
+}
+
+const blogArticleCopy = document.querySelector(".blog-article-page .blog-article-copy");
+if (blogArticleCopy) {
+  const blogArticleParagraphs = Array.from(blogArticleCopy.querySelectorAll("p"));
+  const blogParagraphMobileQuery = window.matchMedia("(max-width: 760px)");
+
+  const setBlogParagraphDelays = () => {
+    blogArticleParagraphs.forEach((paragraph, index) => {
+      const step = blogParagraphMobileQuery.matches ? index : Math.floor(index / 2);
+      paragraph.style.setProperty("--blog-paragraph-delay", `${Math.min(step, 9) * 92}ms`);
+    });
+  };
+
+  const revealAllBlogParagraphs = () => {
+    blogArticleParagraphs.forEach((paragraph) => paragraph.classList.add("is-blog-paragraph-visible"));
+  };
+
+  setBlogParagraphDelays();
+
+  if (reducedMotionQuery.matches || !("IntersectionObserver" in window)) {
+    revealAllBlogParagraphs();
+  } else {
+    body.classList.add("blog-paragraph-reveal-ready");
+    const blogParagraphObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-blog-paragraph-visible");
+          blogParagraphObserver.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.18, rootMargin: "0px 0px -8% 0px" }
+    );
+
+    onSiteReady(() => {
+      blogArticleParagraphs.forEach((paragraph) => blogParagraphObserver.observe(paragraph));
+    });
+  }
+
+  if (blogParagraphMobileQuery.addEventListener) {
+    blogParagraphMobileQuery.addEventListener("change", setBlogParagraphDelays);
+  } else if (blogParagraphMobileQuery.addListener) {
+    blogParagraphMobileQuery.addListener(setBlogParagraphDelays);
+  }
 }
 
 const blogProfileReveals = Array.from(document.querySelectorAll(".blog-profile-reveal"));
