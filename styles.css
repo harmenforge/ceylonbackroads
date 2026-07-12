@@ -1,4 +1,4 @@
-﻿:root {
+:root {
   --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-display: var(--font-sans);
   --font-body: var(--font-sans);
@@ -11443,8 +11443,9 @@ html:not([lang="en"]) .route-plan-line-lead {
 .blog-article-copy {
   width: min(1180px, calc(100% - 48px));
   margin: 0 auto;
-  column-count: 2;
-  column-gap: clamp(48px, 6vw, 96px);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 clamp(48px, 6vw, 96px);
 }
 
 .blog-article-copy p {
@@ -11454,6 +11455,34 @@ html:not([lang="en"]) .route-plan-line-lead {
   font-size: clamp(1.02rem, 1.18vw, 1.18rem);
   font-weight: 500;
   line-height: 1.78;
+}
+
+.blog-article-page .blog-article-copy.reveal {
+  opacity: 1;
+  transform: none;
+  filter: none;
+  clip-path: inset(0);
+  transition: none;
+}
+
+.blog-article-page.blog-paragraph-reveal-ready .blog-article-copy p {
+  opacity: 0;
+  transform: translate3d(0, 22px, 0);
+  filter: blur(5px);
+  clip-path: inset(0 0 12% 0);
+  transition:
+    opacity 880ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 880ms cubic-bezier(0.16, 1, 0.3, 1),
+    filter 880ms ease,
+    clip-path 880ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--blog-paragraph-delay, 0ms);
+}
+
+.blog-article-page.blog-paragraph-reveal-ready .blog-article-copy p.is-blog-paragraph-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  filter: blur(0);
+  clip-path: inset(0);
 }
 
 .blog-article-copy p:first-child {
@@ -12611,6 +12640,7 @@ textarea:focus {
   .route-plan-word,
   .route-plan-trigger,
   .route-plan-options,
+  .blog-article-page.blog-paragraph-reveal-ready .blog-article-copy p,
   .photo-tile img,
   .cinema-stage img {
     transition: none;
@@ -12620,6 +12650,10 @@ textarea:focus {
   }
 
   .route-plan-word {
+    opacity: 1;
+  }
+
+  .blog-article-page.blog-paragraph-reveal-ready .blog-article-copy p {
     opacity: 1;
   }
 
@@ -13001,7 +13035,8 @@ textarea:focus {
 
   .blog-article-copy {
     width: min(100% - 28px, 760px);
-    column-count: 1;
+    grid-template-columns: 1fr;
+    gap: 0;
   }
 
   .hero.compact .hero-content {
